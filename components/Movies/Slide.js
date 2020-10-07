@@ -2,6 +2,7 @@ import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 import PropTypes from "prop-types";
+import { useNavigation } from "@react-navigation/native";
 import { apiImage } from "../../api";
 import Poster from "../Poster";
 import Votes from "../Votes";
@@ -58,27 +59,39 @@ const ButtonText = styled.Text`
   color: white;
 `;
 
-const Slide = ({ id, title, backgroundImage, votes, overview, poster }) => (
-  <Container>
-    <BG source={{ uri: apiImage(backgroundImage) }} />
-    <Content>
-      <Poster url={poster} />
-      <Data>
-        <Title>{trimText(title, 40)}</Title>
-        <VotesContainer>
-          <Votes votes={votes} />
-        </VotesContainer>
-        <Overview>{trimText(overview, 100)}</Overview>
-        <TouchableOpacity>
-          <Button>
-            <ButtonText>View Details</ButtonText>
-          </Button>
-        </TouchableOpacity>
-      </Data>
-    </Content>
-  </Container>
-);
-
+const Slide = ({ id, title, backgroundImage, votes, overview, poster }) => {
+  const navigation = useNavigation(); //props를 사용하게 해주는 hook!
+  const goToDetail = () => {
+    navigation.navigate("Detail", {
+      id,
+      title,
+      backgroundImage,
+      votes,
+      overview,
+      poster, // title:title 과 똑같다..js가 처리함!
+    });
+  };
+  return (
+    <Container>
+      <BG source={{ uri: apiImage(backgroundImage) }} />
+      <Content>
+        <Poster url={poster} />
+        <Data>
+          <Title>{trimText(title, 40)}</Title>
+          <VotesContainer>
+            <Votes votes={votes} />
+          </VotesContainer>
+          <Overview>{trimText(overview, 80)}</Overview>
+          <TouchableOpacity onPress={goToDetail}>
+            <Button>
+              <ButtonText>View Details</ButtonText>
+            </Button>
+          </TouchableOpacity>
+        </Data>
+      </Content>
+    </Container>
+  );
+};
 // moviePreserter로 props를 받을땐 모든 state를 받아서 type검사를 안했다
 // 여기서는 원하는것만 받을거기때문에 proptype 검사를 해야한다!
 

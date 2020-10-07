@@ -11,6 +11,7 @@ export default () => {
   //   movies: [],
   //   error: null,
   // });
+  const [refreshing, setRefresing] = useState(false);
   const [movies, setMovies] = useState({
     loading: true,
     nowPlaying: [],
@@ -39,7 +40,17 @@ export default () => {
   useEffect(() => {
     getData();
   }, []);
-  return <MoviesPresenter {...movies} />;
+  //[]은 항상 업데이트 안할것이다! 빈칸은 항상없데이트.. 안에 정해주면 그때만 업데이트
+
+  // const onRefresh = async () => {
+  //   setRefresing(true);
+  //   await getDate();
+  //   setRefresing(false);
+  // }; //새로 고침을 위한 설정!
+
+  return <MoviesPresenter refreshFn={getData} {...movies} />;
+  // presenter로 데이터 넘겨준다!
+
   // return <MoviesPresenter loading={movies.loading} B=_B C=_C 대신에 ...movies쓰면됨! />;
   // props 줄때!
 };

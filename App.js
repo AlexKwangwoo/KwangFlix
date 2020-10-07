@@ -27,7 +27,7 @@ export default function App() {
   //isReady값을 useState를 이용햐 false값을 준다.. setIsready는 어떻게 변화할지..
   const loadAssets = () => {
     const images = cacheImages([
-      "https://images.unsplash.com/photo-1601742162870-46790bce3120?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1571847140471-1d7766e825ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=673&q=80",
       require("./assets/splash.png"),
     ]);
     const fonts = cacheFonts([Ionicons.font]);

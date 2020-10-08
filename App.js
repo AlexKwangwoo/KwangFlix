@@ -4,10 +4,12 @@ import * as Font from "expo-font";
 import { Image, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { Asset } from "expo-asset";
-import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import Stack from "./navigation/Stack";
 
 const cacheImages = (images) =>
+  //cache~~ 친구들은 로딩을 통해 미리 나중에 불려올
+  // 상황을 예측해 데이터 저장을 해둔다!
   images.map((image) => {
     // images는 url이 될것이다. + array여야 한다!
     if (typeof image === "string") {
@@ -30,10 +32,10 @@ export default function App() {
       "https://images.unsplash.com/photo-1571847140471-1d7766e825ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=673&q=80",
       require("./assets/splash.png"),
     ]);
-    const fonts = cacheFonts([Ionicons.font]);
-    console.log(images);
-    console.log("haha");
-    console.log(fonts);
+    const fonts = cacheFonts([Ionicons.font, FontAwesome.font]);
+    // console.log(images);
+    // console.log("haha");
+    // console.log(fonts);
     return Promise.all([...images, ...fonts]);
     // 하나의 어레이를 만든다   ...는 그 어레이의 모든속성을 가져온다 보면됨!
   };
@@ -44,7 +46,7 @@ export default function App() {
         <Stack />
       </NavigationContainer>
       <StatusBar barStyle="light-content" />
-    </>
+    </> //여기를 통해 맨처음 화면이 실행됨을 결정...기본적으로App.js가 먼저 읽힌다!
   ) : (
     <AppLoading
       startAsync={loadAssets}

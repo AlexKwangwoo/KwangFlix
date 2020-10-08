@@ -39,6 +39,8 @@ export default ({ movies, shows, keyword, onChange, onSubmit }) => (
       <HorizontalSlider title={"TV Results"}>
         {shows.map((show) => (
           <Vertical
+            isTv={true}
+            //티비인지 movie인지 따라 detailContainer에 값을 저장해뒀음
             key={show.id}
             id={show.id}
             votes={show.vote_average}

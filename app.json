@@ -1,15 +1,18 @@
 {
   "expo": {
-    "name": "kwangMovies",
+    "name": "KwangFlix",
     "slug": "kwangMovies",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "platforms": ["ios", "android", "web"],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
+    "primaryColor": "#000000",
+    "backgroundColor": "#000000",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -17,10 +20,27 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "kr.co.dothome.bnc3049",
+      "buildNumber": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "kr.co.dothome.bnc3049",
+      "versionCode": 1
+    },
+    "androidStatusBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#000000"
+    },
+    "androidNavigationBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#000000"
     }
+
+
+
   }
 }

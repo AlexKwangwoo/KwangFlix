@@ -10,7 +10,7 @@ import ScrollContainer from "../../components/ScrollContainer";
 export default ({ movies, shows, keyword, onChange, onSubmit }) => (
   <ScrollContainer
     refreshFn={onSubmit}
-    // searh는 refreshFn 인자(새로고침으)로써 onsubmit(getdata)와 같은 내용을 원한다!
+    // search는 refreshFn 인자(새로고침으)로써 onsubmit(getdata)와 같은 내용을 원한다!
     loading={false}
     contentContainerStyle={{
       paddingTop: 10,
